@@ -5,6 +5,12 @@ import joblib
 import plotly.express as px
 import plotly.graph_objects as go
 import datetime as dt
+import os, zipfile
+
+# Auto-extract zip if canteen_outputs folder is missing
+if not os.path.exists("canteen_outputs") and os.path.exists("smart_food_waste_project_outputs.zip"):
+    with zipfile.ZipFile("smart_food_waste_project_outputs.zip", "r") as zf:
+        zf.extractall("canteen_outputs")
 
 st.set_page_config(page_title="Smart Canteen Food Waste Optimizer", page_icon="🍽️", layout="wide")
 
